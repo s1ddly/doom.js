@@ -6,7 +6,24 @@
 | These lines define the global data structures used across other sections of the game
 -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 */
+//Below declares all static variables that are declared in the doomdef file
 var VERSION = 110;
+var TICRATE = 35;
+var INVULNTICS = (30*TICRATE);
+var INVISTICS = (60*TICRATE);
+var INFRATICS = (120*TICRATE);
+var IRONTICS = (60*TICRATE);
+var BASE_WIDTH = 320;
+var SCREEN_MUL = 1;
+var INV_ASPECT_RATIO = 0.625;
+var SCREENWIDTH = 320;
+var SCREENHEIGHT = 200;
+var MAXPLAYERS = 4;
+var MTF_EASY = 1;
+var MTF_NORMAL = 2;
+var MTF_HARD = 4;
+var MTF_AMBUSH = 8;
+
 
 //Below are the 2 prototype classes for enums in javascript 
 //the enum_tProto class lays out the basic functionality of the class, getter and setter for the value and declares the list of potential values
@@ -20,15 +37,18 @@ class enum_tProto {
 		if(this.PinputList.indexOf(inputArgument) != -1){
 			this._val = inputArgument;
 		} else {
-			throw "GameMode_t type error";
+			throw "enum type error";
 		}
+	}
+	get num(){
+		return this.PinputList.length;
 	}
 }
 
 class enum_t extends enum_tProto {
 	constructor(inputArgument, inputList){
 		super();
-		this.PinputList = inputList
+		this.PinputList = inputList;
 		this.val = inputArgument;
 	}
 }
@@ -64,10 +84,23 @@ class skill_t extends enum_t {
 	}
 }
 
-class skill_t extends enum_t {
+class card_t extends enum_t {
 	constructor(inputArgument){
-		super(inputArgument, ['sk_baby','sk_easy','sk_medium','sk_hard','sk_nightmare']);
+		super(inputArgument, ['it_bluecard','it_yellowcard','it_redcard','it_blueskull','it_yellowskull','it_redskull']);
 	}
 }
+
+class weapontype_t extends enum_t {
+	constructor(inputArgument){
+		super(inputArgument, ['wp_fist','wp_pistol','wp_shotgun','wp_chaingun','wp_missile','wp_plasma','wp_bfg','wp_chainsaw','wp_supershotgun','wp_nochange']);
+	}
+}
+
+class ammotype_t extends enum_t {
+	constructor(inputArgument){
+		super(inputArgument, ['am_clip','am_shell','am_cell','am_misl','am_noammo']);
+	}
+}
+
 
 var gamemode = new GameMode_t('shareware');
