@@ -137,3 +137,30 @@ var ML_SOUNDBLOCK = 64;
 var ML_DONTDRAW = 128;
 var ML_MAPPED = 256;
 var NF_SUBSECTOR = 32768;
+
+class mapvertex_t {
+	constructor(xin, yin) {
+		this.x = xin;
+		this.y = yin;
+	}
+	get x() {
+		return this._x;
+	}
+	set x(xin) {
+		if(typeof xin == 'number' && xin <= 32767 && xin >= -32767){
+			this._x = xin; 
+		} else {
+			throw "mapvertex_t type error";
+		}
+	}
+	get y() {
+		return this._y;
+	}
+	set y(yin) {
+		if(typeof yin == 'number' && yin <= 32767 && yin >= -32767){
+			this._y = yin;
+		} else {
+			throw "mapvertex_t type error";
+		}
+	}
+}
