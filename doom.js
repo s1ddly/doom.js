@@ -115,3 +115,25 @@ class ammotype_t extends enum_t {
 | These lines define the global data structures used across other sections of the game			|
 -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 */
+//Doomdata static variables
+var ML_LABEL = 0;
+var ML_THINGS = 1;
+var ML_LINEDEFS = 2;
+var ML_SIDEDEFS = 3;
+var ML_VERTEXES = 4;
+var ML_SEGS = 5;
+var ML_SSECTORS = 6;
+var ML_NODES = 7;
+var ML_SECTORS = 8;
+var ML_REJECT = 9;
+var ML_BLOCKMAP = 10;
+var ML_BLOCKING = 1;
+var ML_BLOCKMONSTERS = 2;
+var ML_TWOSIDED = 4;
+var ML_DONTPEGTOP = 8;
+var ML_DONTPEGBOTTOM = 16;
+var ML_SECRET = 32;
+var ML_SOUNDBLOCK = 64;
+var ML_DONTDRAW = 128;
+var ML_MAPPED = 256;
+var NF_SUBSECTOR = 32768;
