@@ -102,5 +102,3 @@ class ammotype_t extends enum_t {
 	}
 }
 
-
-var gamemode = new GameMode_t('shareware');
