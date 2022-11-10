@@ -138,14 +138,15 @@ var ML_DONTDRAW = 128;
 var ML_MAPPED = 256;
 var NF_SUBSECTOR = 32768;
 
+
+//Below are the classes for each "struct" in the doomdata.h file
 class mapvertex_t {
+	//has 2 properties, x and y, both are supposed to be C `shorts`, meaning numbers between -32767 and 32767.
 	constructor(xin, yin) {
 		this.x = xin;
 		this.y = yin;
 	}
-	get x() {
-		return this._x;
-	}
+	
 	set x(xin) {
 		if(typeof xin == 'number' && xin <= 32767 && xin >= -32767){
 			this._x = xin; 
@@ -153,14 +154,104 @@ class mapvertex_t {
 			throw "mapvertex_t type error";
 		}
 	}
-	get y() {
-		return this._y;
-	}
+	
 	set y(yin) {
 		if(typeof yin == 'number' && yin <= 32767 && yin >= -32767){
 			this._y = yin;
 		} else {
 			throw "mapvertex_t type error";
 		}
+	}
+	
+	get x() {
+		return this._x;
+	}
+	
+	get y() {
+		return this._y;
+	}
+}
+
+class mapsidedef_t {
+	//Has 6 properties, 2 shorts for texture and row offset, 3 char arrays of length 8 representing top, middle and bottom textures, and a short representing the `sector`
+	constructor(textureoffsetin, rowoffsetin, toptexturein, bottomtexturein, midtexturein, sectorin){
+		this.textureoffset = textureoffsetin;
+		this.rowoffset = rowoffsetin;
+		this.toptexture = toptexturein;
+		this.bottomtexture = bottomtexturein;
+		this.midtexture = midtexturein;
+		this.sector = sectorin;
+	}
+	
+	set textureoffset(textureoffsetin) {
+		if(typeof textureoffsetin == 'number' && textureoffsetin <= 32767 && textureoffsetin >= -32767){
+			this._textureoffset = textureoffsetin; 
+		} else {
+			throw "mapsidedef_t type error";
+		}
+	}
+	
+	set rowoffset(rowoffsetin) {
+		if(typeof rowoffsetin == 'number' && rowoffsetin <= 32767 && rowoffsetin >= -32767){
+			this._rowoffset = rowoffsetin; 
+		} else {
+			throw "mapsidedef_t type error";
+		}
+	}
+	
+	set bottomtexture(bottomtexturein){
+		if(typeof bottomtexturein == 'object' && bottomtexturein.length == 8){
+			this._bottomtexture = bottomtexturein; 
+		} else {
+			throw "mapsidedef_t type error";
+		}
+	}
+	
+	set midtexture(midtexturein){
+		if(typeof midtexturein == 'object' && midtexturein.length == 8){
+			this._midtexture = midtexturein; 
+		} else {
+			throw "mapsidedef_t type error";
+		}
+	}
+	
+	set toptexture(toptexturein){
+		if(typeof toptexturein == 'object' && toptexturein.length == 8){
+			this._toptexture = toptexturein; 
+		} else {
+			throw "mapsidedef_t type error";
+		}
+	}
+	
+	set sector(sectorin) {
+		if(typeof sectorin == 'number' && sectorin <= 32767 && sectorin >= -32767){
+			this._sector = sectorin; 
+		} else {
+			throw "mapsidedef_t type error";
+		}
+	}
+	
+	get textureoffset(){
+		return this._textureoffset;
+	}
+	
+	get rowoffset(){
+		return this._rowoffset;
+	}
+	
+	get bottomtexture(){
+		return this._bottomtexture;
+	}
+	
+	get midtexture(){
+		return this._midtexture;
+	}
+	
+	get toptexture(){
+		return this._toptexture;
+	}
+	
+	get sector(){
+		return this._sector;
 	}
 }
