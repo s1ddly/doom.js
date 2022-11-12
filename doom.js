@@ -33,6 +33,16 @@ class enum_t extends enum_tProto {
 	}
 }
 
+class struct_proto {
+	short_gen(inval){
+		if(typeof inval == 'number' && inval <= 32767 && inval >= -32767){
+			return inval; 
+		} else {
+			throw "struct type error";
+		}
+	}
+}
+
 /*
 -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 | Doom Definitions																				|
@@ -140,27 +150,20 @@ var NF_SUBSECTOR = 32768;
 
 
 //Below are the classes for each "struct" in the doomdata.h file
-class mapvertex_t {
+class mapvertex_t extends struct_proto{
 	//has 2 properties, x and y, both are supposed to be C `shorts`, meaning numbers between -32767 and 32767.
 	constructor(xin, yin) {
+		super()
 		this.x = xin;
 		this.y = yin;
 	}
 	
 	set x(xin) {
-		if(typeof xin == 'number' && xin <= 32767 && xin >= -32767){
-			this._x = xin; 
-		} else {
-			throw "mapvertex_t type error";
-		}
+		this._x = this.short_gen(xin);
 	}
 	
 	set y(yin) {
-		if(typeof yin == 'number' && yin <= 32767 && yin >= -32767){
-			this._y = yin;
-		} else {
-			throw "mapvertex_t type error";
-		}
+		this._y = this.short_gen(yin);
 	}
 	
 	get x() {
