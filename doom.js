@@ -243,3 +243,63 @@ class mapsidedef_t extends struct_proto{
 		return this._sector;
 	}
 }
+
+class maplinedef_t extends struct_proto{
+	constructor(v1in, v2in, flagsin, specialin, tagin, sidenumin){
+		super();
+		this.v1 = v1in;
+		this.v2 = v2in;
+		this.flags = flagsin;
+		this.special = specialin;
+		this.tag = tagin;
+		this.sidenum = sidenumin;
+	}
+	
+	set v1(v1in){
+		this._v1 = this.short_gen(v1in);
+	}
+	
+	set v2(v2in){
+		this._v2 = this.short_gen(v2in);
+	}
+	
+	set flags(flagsin){
+		this._flags = this.short_gen(flagsin);
+	}
+	
+	set special(specialin){
+		this._special = this.short_gen(specialin);
+	}
+	
+	set tag(tagin){
+		this._tag = this.short_gen(tagin);
+	}
+	
+	set sidenum(sidenumin){
+		this._sidenum = this.array_gen(sidenumin, 2, 'number');
+	}
+	
+	get v1(){
+		return this._v1;
+	}
+	
+	get v2(){
+		return this._v2;
+	}
+	
+	get flags(){
+		return this._flags;
+	}
+	
+	get special(){
+		return this._special;
+	}
+	
+	get tag(){
+		return this._tag;
+	}
+	
+	get sidenum(){
+		return this._sidenum;
+	}
+}
