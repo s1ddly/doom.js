@@ -41,6 +41,14 @@ class struct_proto {
 			throw "struct type error";
 		}
 	}
+	
+	array_gen(inval, inlength, intype){
+		if (inval.length == inlength){
+			inval.forEach(element => {if(typeof element != intype){throw "struct type error"}});
+			return inval;
+		}
+		throw "struct type error"
+	}
 }
 
 /*
@@ -175,9 +183,10 @@ class mapvertex_t extends struct_proto{
 	}
 }
 
-class mapsidedef_t {
+class mapsidedef_t extends struct_proto{
 	//Has 6 properties, 2 shorts for texture and row offset, 3 char arrays of length 8 representing top, middle and bottom textures, and a short representing the `sector`
 	constructor(textureoffsetin, rowoffsetin, toptexturein, bottomtexturein, midtexturein, sectorin){
+		super();
 		this.textureoffset = textureoffsetin;
 		this.rowoffset = rowoffsetin;
 		this.toptexture = toptexturein;
@@ -187,51 +196,27 @@ class mapsidedef_t {
 	}
 	
 	set textureoffset(textureoffsetin) {
-		if(typeof textureoffsetin == 'number' && textureoffsetin <= 32767 && textureoffsetin >= -32767){
-			this._textureoffset = textureoffsetin; 
-		} else {
-			throw "mapsidedef_t type error";
-		}
+		this._textureoffset = this.short_gen(textureoffsetin);
 	}
 	
 	set rowoffset(rowoffsetin) {
-		if(typeof rowoffsetin == 'number' && rowoffsetin <= 32767 && rowoffsetin >= -32767){
-			this._rowoffset = rowoffsetin; 
-		} else {
-			throw "mapsidedef_t type error";
-		}
-	}
-	
-	set bottomtexture(bottomtexturein){
-		if(typeof bottomtexturein == 'object' && bottomtexturein.length == 8){
-			this._bottomtexture = bottomtexturein; 
-		} else {
-			throw "mapsidedef_t type error";
-		}
-	}
-	
-	set midtexture(midtexturein){
-		if(typeof midtexturein == 'object' && midtexturein.length == 8){
-			this._midtexture = midtexturein; 
-		} else {
-			throw "mapsidedef_t type error";
-		}
+		this._rowoffset = this.short_gen(rowoffsetin);
 	}
 	
 	set toptexture(toptexturein){
-		if(typeof toptexturein == 'object' && toptexturein.length == 8){
-			this._toptexture = toptexturein; 
-		} else {
-			throw "mapsidedef_t type error";
-		}
+		this._toptexture = this.array_gen(toptexturein, 8, 'string');
+	}
+	
+	set bottomtexture(bottomtexturein){
+		this._bottomtexture = this.array_gen(bottomtexturein, 8, 'string');
+	}
+	
+	set midtexture(midtexturein){
+		this._midtexture = this.array_gen(midtexturein, 8, 'string');
 	}
 	
 	set sector(sectorin) {
-		if(typeof sectorin == 'number' && sectorin <= 32767 && sectorin >= -32767){
-			this._sector = sectorin; 
-		} else {
-			throw "mapsidedef_t type error";
-		}
+		this._sector = this.short_gen(sectorin)
 	}
 	
 	get textureoffset(){
