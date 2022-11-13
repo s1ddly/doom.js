@@ -42,12 +42,43 @@ class struct_proto {
 		}
 	}
 	
+	ushort_gen(inval){
+		if(typeof inval == 'number' && inval <= 65535 && inval >= 0){
+			return inval; 
+		} else {
+			throw "struct type error";
+		}
+	}
+	
 	array_gen(inval, inlength, intype){
 		if (inval.length == inlength){
-			inval.forEach(element => {if(typeof element != intype){throw "struct type error"}});
+			for (let array_iterator = 0; array_iterator < inlength; array_iterator++){
+				if(typeof inval[array_iterator] != intype){
+					throw "struct type error";
+				}
+			}
 			return inval;
 		}
-		throw "struct type error"
+		throw "struct type error";
+	}
+	
+	array_2d_gen(inval, inlength1, inlength2, intype){
+		if (inval.length == inlength1){
+			for (let array_iterator = 0; array_iterator < inlength1; array_iterator++){
+				if (inval[array_iterator].length == inlength2){
+					for (let array_iterator2 = 0; array_iterator2 < inlength2; array_iterator2++){
+						if(typeof inval[array_iterator][array_iterator2] != intype){
+							throw "struct type error";
+						}
+					}
+				}
+				else{
+					throw "struct type error";
+				}
+			}
+			return inval;
+		}
+		throw "struct type error";
 	}
 }
 
@@ -373,7 +404,7 @@ class mapsector_t extends struct_proto {
 	}
 }
 
-class mapsector_t extends struct_proto {
+class mapsubsector_t extends struct_proto {
 	constructor(numsegsin, firstsegin){
 		this.numsegs = numsegsin;
 		this.firstseg = firstsegin;
