@@ -395,3 +395,63 @@ class mapsector_t extends struct_proto {
 		return this._firstseg;
 	}
 }
+
+class mapseg_t extends struct_proto{
+	constructor(v1in, v2in, anglein, linedefin, sidein, offsetin){
+		super();
+		this.v1 = v1in;
+		this.v2 = v2in;
+		this.angle = anglein;
+		this.linedef = linedefin;
+		this.side = sidein;
+		this.offset = offsetin;
+	}
+	
+	set v1(v1in){
+		this._v1 = this.short_gen(v1in);
+	}
+	
+	set v2(v2in){
+		this._v2 = this.short_gen(v2in);
+	}
+	
+	set angle(anglein){
+		this._angle = this.short_gen(anglein);
+	}
+	
+	set linedef(linedefin){
+		this._linedef = this.short_gen(linedefin);
+	}
+	
+	set side(sidein){
+		this._side = this.short_gen(sidein);
+	}
+	
+	set offset(offsetin){
+		this._offset = this.short_gen(offsetin);
+	}
+	
+	get v1(){
+		return this._v1;
+	}
+	
+	get v2(){
+		return this._v2;
+	}
+	
+	get angle(){
+		return this._angle;
+	}
+	
+	get linedef(){
+		return this._linedef;
+	}
+	
+	get side(){
+		return this._side;
+	}
+	
+	get offset(){
+		return this._offset;
+	}
+}
