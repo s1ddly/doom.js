@@ -303,3 +303,95 @@ class maplinedef_t extends struct_proto{
 		return this._sidenum;
 	}
 }
+
+class mapsector_t extends struct_proto {
+	constructor(floorheightin, ceilingheightin, floorpicin, ceilingpicin, lightlevelin, specialin, tagin){
+		super()
+		this.floorheight = floorheightin;
+		this.ceilingheight = ceilingheightin;
+		this.floorpic = floorpicin;
+		this.ceilingpic = ceilingpicin;
+		this.lightlevel = lightlevelin;
+		this.special = specialin;
+		this.tag = tagin;
+	}
+	
+	set floorheight(floorheightin){
+		this._floorheight = this.short_gen(floorheightin);
+	}
+	
+	set ceilingheight(ceilingheightin){
+		this._ceilingheight = this.short_gen(ceilingheightin);
+	}
+	
+	set floorpic(floorpicin){
+		this._floorpic = this.array_gen(floorpicin, 8, 'string');
+	}
+	
+	set ceilingpic(ceilingpicin){
+		this._ceilingpic = this.array_gen(ceilingpicin, 8, 'string');
+	}
+	
+	set lightlevel(lightlevelin){
+		this._lightlevel = this.short_gen(lightlevelin);
+	}
+	
+	set special(specialin){
+		this._special = this.short_gen(specialin);
+	}
+	
+	set tag(tagin){
+		this._tag = this.short_gen(tagin);
+	}
+	
+	get floorheight(){
+		return this._floorheight;
+	}
+
+	get ceilingheight(){
+		return this._ceilingheight;
+	}
+
+	get floorpic(){
+		return this._floorpic;
+	}
+
+	get ceilingpic(){
+		return this._ceilingpic;
+	}
+
+	get lightlevel(){
+		return this._lightlevel;
+	}
+
+	get special(){
+		return this._special;
+	}
+
+	get tag(){
+		return this._tag;
+	}
+}
+
+class mapsector_t extends struct_proto {
+	constructor(numsegsin, firstsegin){
+		this.numsegs = numsegsin;
+		this.firstseg = firstsegin;
+	}
+	
+	set numsegs(numsegsin){
+		this._numsegs = this.short_gen(numsegsin);
+	}
+	
+	set firstseg(firstsegin){
+		this._firstseg = this.short_gen(firstsegin);
+	}
+	
+	get numsegs(){
+		return this._numsegs;
+	}
+	
+	get firstseg(){
+		return this._firstseg;
+	}
+}
