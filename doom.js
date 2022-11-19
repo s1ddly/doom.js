@@ -35,7 +35,7 @@ class enum_t extends enum_tProto {
 
 class struct_proto {
 	short_gen(inval){
-		if(typeof inval == 'number' && inval <= 32767 && inval >= -32767){
+		if(typeof inval == 'number' && inval <= MAXSHORT && inval >= MINSHORT){
 			return inval; 
 		} else {
 			throw "struct type error";
@@ -602,3 +602,16 @@ class mapthing_t extends struct_proto{
 		return this._options;
 	}
 }
+
+/*
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+| Doom Type																						|
+| The following lines of code are ported from the doomtype.h									|
+| These lines define some global maximum and minimum values for data types						|
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+*/
+var MAXSHORT = 32767;
+var MAXINT = 2147483647;
+var MAXLONG = 2147483647;
+var MININT = -2147483647;
+var MINSHORT = -32767;
