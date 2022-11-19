@@ -72,13 +72,14 @@ class struct_proto {
 						}
 					}
 				}
-				else{
+				else {
 					throw "struct type error";
 				}
 			}
 			return inval;
+		} else {
+			throw "struct type error";
 		}
-		throw "struct type error";
 	}
 }
 
@@ -484,5 +485,120 @@ class mapseg_t extends struct_proto{
 	
 	get offset(){
 		return this._offset;
+	}
+}
+
+class mapnode_t extends struct_proto{
+	constructor(xin, yin, dxin, dyin, bboxin, childrenin){
+		super();
+		this.x = xin;
+		this.y = yin;
+		this.dx = dxin;
+		this.dy = dyin;
+		this.bbox = bboxin;
+		this.children = childrenin;
+	}
+	
+	set x(xin){
+		this._x = this.short_gen(xin);
+	}
+	
+	set y(yin){
+		this._y = this.short_gen(yin);
+	}
+	
+	set dx(dxin){
+		this._dx = this.short_gen(dxin);
+	}
+	
+	set dy(dyin){
+		this._dy = this.short_gen(dyin);
+	}
+	
+	set dy(dyin){
+		this._dy = this.short_gen(dyin);
+	}
+	
+	set bbox(bboxin){
+		this._bbox = this.array_2d_gen(bboxin, 2, 4, "number");
+	}
+	
+	set children(childrenin){
+		this._children = this.array_gen(childrenin, 2, "number");
+	}
+	
+	get x(){
+		return this._x;
+	}
+	
+	get y(){
+		return this._y;
+	}
+	
+	get dx(){
+		return this._dx;
+	}
+	
+	get dy(){
+		return this._dy;
+	}
+	
+	get bbox(){
+		return this._bbox;
+	}
+	
+	get children(){
+		return this._children;
+	}
+}
+
+class mapthing_t extends struct_proto{
+	constructor(xin, yin, anglein, typein, optionsin){
+		super();
+		this.x = xin;
+		this.y = yin;
+		this.angle = anglein;
+		this.type = typein;
+		this.options = optionsin;
+	}
+	
+	set x(xin){
+		this._x = this.short_gen(xin);
+	}
+	
+	set y(yin){
+		this._y = this.short_gen(yin);
+	}
+	
+	set angle(anglein){
+		this._angle = this.short_gen(anglein);
+	}
+	
+	set type(typein){
+		this._type = this.short_gen(typein);
+	}
+	
+	set options(optionsin){
+		this._options = this.short_gen(optionsin);
+	}
+
+	get x(){
+		return this._x;
+	}
+
+	get y(){
+		return this._y;
+	}
+
+	get angle(){
+		return this._angle;
+	}
+
+	get type(){
+		return this._type;
+	}
+
+	get options(){
+		return this._options;
 	}
 }
